@@ -1,5 +1,4 @@
 let slideIndex = 1;
-showSlides(slideIndex);
 
 function plusSlides(n) {
   showSlides(slideIndex += n);
@@ -9,10 +8,11 @@ function currentSlide(n) {
   showSlides(slideIndex = n);
 }
 
+showSlides(slideIndex);
 
 function myFunction() {
   setTimeout(currentSlide(slideIndex), 1000);
-  slideIndex++;
+  slideIndex += 1;
 }
 
 myFunction();
@@ -20,38 +20,37 @@ myFunction();
 
 function showSlides(n) {
   let i;
-  let slides = document.getElementsByClassName("slide__image");
-  let dots = document.getElementsByClassName("dot");
+  const slides = document.getElementsByClassName('slide__image');
+  const dots = document.getElementsByClassName('dot');
   if (n > slides.length) { slideIndex = 1 }
   if (n < 1) { slideIndex = slides.length }
   for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
+    slides[i].style.display = 'none';
   }
   for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
+    dots[i].className = dots[i].className.replace('active', '');
   }
-  slides[slideIndex - 1].style.display = "block";
-  dots[slideIndex - 1].className += " active";
+  slides[slideIndex - 1].style.display = 'block';
+  dots[slideIndex - 1].className += ' active';
 }
 
 function trocaImagens() {
-  let width = screen.width;
-  let img = document.querySelectorAll(".slide__image img");
+  const width = screen.width;
+  const img = document.querySelectorAll('.slide__image img');
   let cont = 1;
-  
   function optionScreen(screen) {
     img.forEach((el) => {
-      el.setAttribute('src', `./img/img-slide/${screen}${cont}.jpg`)
-      cont++;
-    })
+      el.setAttribute('src', `./img/img-slide/${screen}${cont}.jpg`);
+      cont += 1;
+    });
   }
 
   if (width <= 768) {
-    optionScreen('imagem')
+    optionScreen('imagem');
   } else {
-    optionScreen('imagem-grande')
+    optionScreen('imagem-grande');
   }
 }
 
 
-window.addEventListener("resize", trocaImagens);
+window.addEventListener('resize', trocaImagens);
