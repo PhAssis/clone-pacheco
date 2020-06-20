@@ -36,22 +36,20 @@ function showSlides(n) {
 
 function trocaImagens() {
   let width = screen.width;
+  let img = document.querySelectorAll(".slide__image img");
+  let cont = 1;
+  
+  function optionScreen(screen) {
+    img.forEach((el) => {
+      el.setAttribute('src', `./img/img-slide/${screen}${cont}.jpg`)
+      cont++;
+    })
+  }
 
   if (width <= 768) {
-    let img = document.querySelectorAll(".slide__image img");
-    let cont = 1;
-    img.forEach((el) => {
-      let att = el.getAttribute('src');
-      el.setAttribute('src', `./img/img-slide/imagem${cont}.jpg`)
-      cont++;
-    })
+    optionScreen('imagem')
   } else {
-    let img = document.querySelectorAll(".slide__image img");
-    let cont = 1;
-    img.forEach((el) => {
-      el.setAttribute('src', `./img/img-slide/imagem-grande-${cont}.jpg`)
-      cont++;
-    })
+    optionScreen('imagem-grande')
   }
 }
 
