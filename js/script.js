@@ -45,12 +45,9 @@ function trocaImagens() {
     });
   }
 
-  if (width <= 768) {
-    optionScreen('imagem');
-  } else {
-    optionScreen('imagem-grande');
-  }
+ (width <= 768) ? optionScreen('imagem') : optionScreen('imagem-grande');
 }
 
 
+window.addEventListener('load', trocaImagens);
 window.addEventListener('resize', trocaImagens);
